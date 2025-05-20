@@ -18,3 +18,20 @@ W(:,2)=[10;10;-17;0];
 W(:,3)=[10;20;-15;0];
 W(:,4)=[20;10;-17;0];
 W(:,5)=[20;20;-17;0];
+
+step_size=0.01;
+pos_init=[30;-30;10];
+R_b2e_init=eye(3);
+nu_init=zeros([6,1]);
+
+pos_sig=Simulink.BusElement;
+pos_sig.Name="pos";
+pos_sig.Dimensions=[3,1];
+
+R_sig=Simulink.BusElement;
+R_sig.Name="R_b2e";
+R_sig.Dimensions=[3,3];
+
+
+ModelStateBus = Simulink.Bus;
+ModelStateBus.Elements = [pos_sig, R_sig];
